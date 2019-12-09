@@ -23,12 +23,10 @@
    * 남녀노소 다양한 연령대가 쉽게 AR에 접근가능
   
   # 기능 소개
-  <img src="https://user-images.githubusercontent.com/45090204/70404708-3f64e600-1a7e-11ea-87f9-2baa7896d8b7.PNG" width="450px" height="300px" ></img><br/>
-  
-![따라쓰기](https://user-images.githubusercontent.com/45090204/70404708-3f64e600-1a7e-11ea-87f9-2baa7896d8b7.PNG)
+  <img src="https://user-images.githubusercontent.com/45090204/70404708-3f64e600-1a7e-11ea-87f9-2baa7896d8b7.PNG" width="800px" height="300px" ></img><br/>
+    <img src="https://user-images.githubusercontent.com/45090204/70404721-4986e480-1a7e-11ea-9ffd-d5e6b61688f3.PNG" width="800px" height="300px" ></img><br/>
+      <img src="https://user-images.githubusercontent.com/45090204/70404722-4a1f7b00-1a7e-11ea-83d3-578e961770ae.PNG" width="800px" height="400px" ></img><br/>
+      
 
-![한글모드](https://user-images.githubusercontent.com/45090204/70404721-4986e480-1a7e-11ea-9ffd-d5e6b61688f3.PNG)
-
-![동물](https://user-images.githubusercontent.com/45090204/70404722-4a1f7b00-1a7e-11ea-83d3-578e961770ae.PNG)
 
    
