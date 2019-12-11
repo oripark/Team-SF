@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="login">
+	
+	<select id="login" resultType="String">
+		SELECT MEMBER_NAME FROM MEMBER_LIST where MEMBER_ID <![CDATA[=]]> #{member_id} AND MEMBER_PW <![CDATA[=]]> #{member_pw} 
+	</select>
+	
+	<select id="LoginView" resultType="com.sft.mdk.dto.MemberDTO">
+		SELECT NO,MEMBER_ID,MEMBER_PW,MEMBER_NAME,MEMBER_BIRTH,MEMBER_POSTCODE,MEMBER_ROADADDRESS,MEMBER_JIBUNADDRESS,MEMBER_EXTRAADDRESS,MEMBER_DETAILADDRESS,MEMBER_PHONE,MEMBER_EMAIL FROM MEMBER_LIST where MEMBER_ID <![CDATA[=]]> #{member_id} AND MEMBER_PW <![CDATA[=]]> #{member_pw}
+	</select>
+	
+	<select id="pwCheck" resultType="String">
+		SELECT MEMBER_PW FROM MEMBER_LIST WHERE MEMBER_PW = #{member_pw}
+	</select>
+	
+	<update id="info_update">
+		UPDATE MEMBER_LIST SET MEMBER_PW=#{member_pw}, MEMBER_POSTCODE=#{member_postcode}, MEMBER_ROADADDRESS=#{member_roadAddress}, MEMBER_JIBUNADDRESS=#{member_jibunAddress}, MEMBER_EXTRAADDRESS=#{member_extraAddress}, MEMBER_DETAILADDRESS=#{member_detailAddress}, MEMBER_PHONE=#{member_phone}, MEMBER_EMAIL=#{member_email} WHERE MEMBER_ID=#{member_id}   
+	</update>
+	
+
+</mapper>

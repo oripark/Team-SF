@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="card">
+	<select id="card_list" resultType="com.sft.mdk.dto.CardDTO">
+		SELECT NO, CARD_NAME, CATEGORY, CARD_PRICE, IMAGE_PATH FROM CARD_LIST where no <![CDATA[>=]]> #{start} and no <![CDATA[<=]]> #{end}
+	</select>
+
+	<select id="count" resultType="int">
+		SELECT count(*) FROM CARD_LIST
+	</select>
+	
+	<select id="card_detail" resultType="com.sft.mdk.dto.CardDTO">
+		SELECT NO, CARD_NAME, CATEGORY, CARD_PRICE, IMAGE_PATH, DETAIL_IMAGE_PATH_1, DETAIL_IMAGE_PATH_2, DETAIL_IMAGE_PATH_3 FROM CARD_LIST where no <![CDATA[=]]> #{no}
+	</select>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="cart">
+	<insert id="cart_insert">
+		INSERT INTO CART_LIST(NO,LOGIN_NO,CART_NO,AMOUNT,IMAGE_PATH) VALUES(#{no},#{login_no},#{cart_no},#{amount},#{image_path})
+	</insert>
+	<select id="cart_view" resultType="com.sft.mdk.dto.CartDTO">
+		SELECT a.no,a.cart_no,b.card_name,b.card_price,a.amount,a.image_path from cart_list a join card_list b where a.cart_no = b.no and login_no = #{login_no};
+	</select>
+	<delete id="cart_delete">
+		DELETE FROM cart_list WHERE no = #{no}
+	</delete>
+	<update id="cart_update">
+		UPDATE cart_list SET no = no - 1 WHERE no > #{no}
+	</update>
+	<select id="cart_count" resultType="int">
+		SELECT COUNT(*) FROM CART_LIST
+	</select>	
+	<select id="cart_view_count" resultType="int">
+		SELECT COUNT(*) FROM CART_LIST WHERE login_no = #{login_no}
+	</select>
+</mapper>

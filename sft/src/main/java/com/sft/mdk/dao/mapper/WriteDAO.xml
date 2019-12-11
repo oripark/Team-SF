@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="write">
+	<insert id="write_insert">
+		INSERT INTO BOARD_LIST(NO,LOGIN_NO,TITLE,CONTENTS) VALUES(#{no},#{login_no},#{title},#{contents})
+	</insert>	
+	<select id="write_count" resultType="int">
+		SELECT COUNT(*) FROM BOARD_LIST
+	</select>
+	<select id="write_view" resultType="com.sft.mdk.dto.WriteDTO">
+		SELECT * from board_list where login_no = #{member_no}
+	</select>
+	<select id="board_view" resultType="com.sft.mdk.dto.WriteDTO">
+		SELECT b.no, m.member_name, b.title, b.contents, b.board_date, b.board_state from board_list b join member_list m where b.no = #{no} and b.login_no = m.no
+	</select>
+	<insert id="reple_insert">
+		INSERT INTO REPLE_LIST(NO,BOARD_NO,LOGIN_NO,REPLE_TXT) VALUES(#{no},#{board_no},#{login_no},#{reple_txt})
+	</insert>
+	<select id="reple_count" resultType="int">
+		SELECT COUNT(*) FROM REPLE_LIST
+	</select>
+	<select id="reple_view" resultType="com.sft.mdk.dto.RepleDTO">
+		SELECT r.no, r.board_no, m.member_name, r.reple_txt, r.reple_date from reple_list r join member_list m where board_no = #{no} and r.login_no = m.no
+	</select>
+	<delete id="board_delete">
+		DELETE FROM board_list WHERE no = #{no}
+	</delete>
+	<delete id="board_reple_delete">
+		DELETE FROM reple_list WHERE board_no = #{no}
+	</delete>
+	<update id="board_update">
+		UPDATE board_list SET no = no - 1 WHERE no > #{no}
+	</update>
+	<update id="board_reple_update">
+		UPDATE reple_list SET board_no = board_no - 1 WHERE board_no > #{no}
+	</update>
+	<update id="reple_update">
+		UPDATE reple_list SET no = no - 1 WHERE no > #{no}
+	</update>
+	<select id="modify_view" resultType="com.sft.mdk.dto.WriteDTO">
+		SELECT * from board_list where no = #{no}
+	</select>
+	<update id="modify_update">
+		UPDATE board_list SET title = #{title}, contents = #{contents} WHERE no = #{no};
+	</update>
+	<delete id="reple_delete">
+		DELETE FROM reple_list WHERE no = #{no}
+	</delete>
+	<select id="admin_view" resultType="com.sft.mdk.dto.WriteDTO">
+		SELECT * from board_list
+	</select>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="order">
+	<insert id="order_insert">
+		INSERT INTO ORDER_LIST(NO,LOGIN_NO,CART_NO,AMOUNT,BUYER_NAME,BUYER_PHONE,BUYER_EMAIL,RECIPIENT_NAME,RECIPIENT_PHONE,RECIPIENT_POSTCODE,RECIPIENT_ROADADDRESS,RECIPIENT_JIBUNADDRESS,RECIPIENT_EXTRAADDRESS,RECIPIENT_DETAILADDRESS,ORDER_MEMO) VALUES(#{no},#{login_no},#{cart_no},#{amount},#{buyer_name},#{buyer_phone},#{buyer_email},#{recipient_name},#{recipient_phone},#{recipient_postcode},#{recipient_roadAddress},#{recipient_jibunAddress},#{recipient_extraAddress},#{recipient_detailAddress},#{order_memo})
+	</insert>
+	
+	<select id="order_count" resultType="int">
+		SELECT COUNT(*) FROM ORDER_LIST
+	</select>
+	
+	<delete id="cart_delete">
+		DELETE FROM CART_LIST WHERE LOGIN_NO = #{login_no}
+	</delete>
+	
+	<delete id="cart_delete_no">
+		DELETE FROM CART_LIST WHERE NO = #{del_no}
+	</delete>
+	
+	<select id="order_view" resultType="com.sft.mdk.dto.OrderDTO">
+		SELECT o.no,c.card_name,c.card_price,c.image_path,o.cart_no,o.amount,o.order_date,o.order_state FROM order_list o join card_list c where o.login_no = #{login_no} and o.cart_no = c.no;
+	</select>
+	
+	<select id="admin_order_view" resultType="com.sft.mdk.dto.OrderDTO">
+		SELECT o.no,o.buyer_name,o.recipient_name,o.recipient_phone,o.recipient_postcode,o.recipient_roadAddress,o.recipient_detailAddress,o.order_memo,c.card_name,c.card_price,c.image_path,o.cart_no,o.amount,o.order_date,o.order_state FROM order_list o join card_list c where o.cart_no = c.no;
+	</select>
+	
+	<update id="order_update">
+		UPDATE ORDER_LIST SET ORDER_STATE = #{order_state} WHERE NO = #{no}
+	</update>
+</mapper>

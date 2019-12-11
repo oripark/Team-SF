@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+	 	 
+<mapper namespace="signUp">
+	<insert id="signUp">
+		INSERT INTO MEMBER_LIST(NO,MEMBER_ID,MEMBER_PW,MEMBER_NAME,MEMBER_BIRTH,MEMBER_POSTCODE,MEMBER_ROADADDRESS,MEMBER_JIBUNADDRESS,MEMBER_EXTRAADDRESS,MEMBER_DETAILADDRESS,MEMBER_PHONE,MEMBER_EMAIL) VALUES(#{no},#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_postcode},#{member_roadAddress},#{member_jibunAddress},#{member_extraAddress},#{member_detailAddress},#{member_phone},#{member_email})
+	</insert>	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM MEMBER_LIST
+	</select>
+
+	<select id="idCheck" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER_LIST WHERE MEMBER_ID = #{member_id}
+	</select>
+</mapper>
+
